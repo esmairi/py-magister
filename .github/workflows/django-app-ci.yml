@@ -1,8 +1,14 @@
-name: Python CI Steps
-description: Install, lint, and test Django app
-runs:
-  using: "composite"
-  steps:
+name: Django CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
@@ -21,6 +27,8 @@ runs:
       run: pre-commit run --all-files --show-diff-on-failure
       shell: bash
 
-    - name: Run tests
-      run: pytest
+    - name: Run Pytest
+      env:
+        DJANGO_SETTINGS_MODULE: tests.settings
+      run: pytest tests
       shell: bash

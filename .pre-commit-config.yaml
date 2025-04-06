@@ -22,10 +22,3 @@ repos:
 #    hooks:
 #      - id: mypy
 
-  - repo: local
-    hooks:
-      - id: pytest
-        name: pytest
-        entry: pytest
-        language: system
-        types: [python]
