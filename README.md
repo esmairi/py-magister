@@ -4,6 +4,8 @@
 
 `py_magister` is a Django application designed to provide comprehensive access control by managing relationships between subjects (users, groups) and resources (documents, objects). It offers a schema-based approach to defining and enforcing permissions, simplifying relationship management and permission checks.
 
+https://pypi.org/project/py-magister/
+
 
 ### Why This Module?
 
@@ -20,7 +22,7 @@ In many authorization systems, you must **first** send a request to the authoriz
 from py_magister.access_manager import AccessManager
 access_manager = AccessManager(schema)
 
-authorized_resources = access_manager.get_authorized_resources(lookup_resources('document',  'read', 'user', 'u1'))
+authorized_resources = access_manager.lookup_resources('document',  'read', 'user', 'u1')
 
 # Now chain additional filters/joins in Django ORM, e.g.:
 results = (
@@ -44,7 +46,7 @@ results = (
 Install the package directly from Git using pip:
 
 ```bash
-pip install py_magister
+pip install py_magister.git
 ```
 Add my_module to your INSTALLED_APPS in settings.py:
 ````python
