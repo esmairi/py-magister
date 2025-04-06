@@ -12,4 +12,3 @@ class BaseDocumentTest:
     json_schema = json.load(open(BASE_DIR / "tests" / "test_document" / "schema.json"))
     access_manager_test = AccessManager(json_schema)
     dj_tester = TestCase()
-

@@ -44,7 +44,7 @@ results = (
 Install the package directly from Git using pip:
 
 ```bash
-pip install py_magister.git
+pip install py_magister
 ```
 Add my_module to your INSTALLED_APPS in settings.py:
 ````python
