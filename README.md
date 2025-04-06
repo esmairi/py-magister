@@ -46,7 +46,7 @@ results = (
 Install the package directly from Git using pip:
 
 ```bash
-pip install py_magister.git
+pip install py_magister
 ```
 Add my_module to your INSTALLED_APPS in settings.py:
 ````python
@@ -245,8 +245,6 @@ from py_magister.models import RelationTuple
 relationship1 = RelationTuple(namespace="user", object_id="doc1", relation="owner", userset_namespace="user", userset_subject_id="user123")
 relationship2 = RelationTuple(namespace="document", object_id="doc1", relation="reader", userset_namespace="group", userset_subject_id="group1", userset_relation="member")
 
-# Single creation
-access_manager.create(relationship1)
 
 # Bulk creation
 access_manager.create_bulk([relationship1, relationship2])
