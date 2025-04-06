@@ -21,4 +21,11 @@ repos:
 #    rev: v1.8.0
 #    hooks:
 #      - id: mypy
-
+#
+#  - repo: local
+#    hooks:
+#      - id: pytest
+#        name: pytest
+#        entry: pytest
+#        language: system
+#        types: [python]

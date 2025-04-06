@@ -4,6 +4,9 @@ on:
   push:
     tags:
       - "v*.*.*"
+    branches:
+      - main
+      - dev
 
 jobs:
   publish:
@@ -18,7 +21,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: "3.10"
+        python-version: "3.12"
 
     - name: Install dependencies
       run: |
@@ -28,6 +31,12 @@ jobs:
 
     - name: Run pre-commit
       run: pre-commit run --all-files --show-diff-on-failure
+      shell: bash
+
+    - name: Run pytest
+      env:
+        DJANGO_SETTINGS_MODULE: tests.test_settings
+      run: pytest tests
       shell: bash
 
     - name: Build package
