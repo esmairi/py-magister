@@ -1,0 +1,28 @@
+{
+    "user": {},
+    "team": {"relations":  {"belongs":  ["user"]}},
+    "group": {"relations":  {"member":  ["user", "group#member", "team#belongs"]}},
+    "PedestalDrawer": {"relations":  {"reader":  ["user"]}, "permissions":  {"read": ["reader"]}},
+    "document": {
+        "relations": {
+            "owner": ["user"],
+            "editor": ["user"],
+            "reader": ["user", "group#member", "document#owner"],
+            "parent": ["document", "PedestalDrawer"]
+        },
+        "permissions": {
+            "read": ["owner", "editor", "reader", "parent->read"],
+            "write": ["owner", "editor", "parent->write"],
+            "manager": ["owner"]
+        }
+    },
+    "file": {
+        "relations": {
+            "parent": ["document"]
+        },
+        "permissions": {
+            "read": ["parent->read"],
+            "write": ["parent->editor"]
+        }
+    }
+}

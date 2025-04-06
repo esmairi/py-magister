@@ -1,0 +1,24 @@
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      DJANGO_SETTINGS_MODULE: tests.settings
+
+    steps:
+      - uses: ./.github/workflows/python-ci
+
+      - name: Build package
+        run: python -m build
+
+      - name: Upload to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: twine upload dist/*
